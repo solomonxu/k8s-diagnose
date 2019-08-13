@@ -10,6 +10,7 @@ echo `date`
 message_subject="No message subject..."
 message_body="No message body..."
 message_attachment=""
-notify
+
+notify;
 
 #notify "No message subject..." "No message body..." ""
