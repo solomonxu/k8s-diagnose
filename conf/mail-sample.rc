@@ -1,0 +1,11 @@
+
+## 7094****@@qq.com
+account 7094****@qq.com {
+    set smtp=smtps://smtp.qq.com:465
+    set smtp-auth=login
+    set smtp-auth-user=7094****@@qq.com
+	set smtp-auth-password="password or auth-code"
+    set from=7094****@@qq.com
+    set ssl-verify=ignore
+    set nss-config-dir=/etc/pki/nssdb
+}
