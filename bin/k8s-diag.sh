@@ -3,14 +3,13 @@
 echo `date`
 
 ## read config and included shells
+chmod a+x ../conf/diag.conf
 . ../conf/diag.conf
-. ./common.sh
+. ./common/email.sh
 
 ## notify receivers
-message_subject="No message subject..."
-message_body="No message body..."
-message_attachment=""
+# message_subject="K8s diagnose report"
+# message_body="`date` Hosts list"
+# message_attachment="/etc/hosts"
 
-notify;
-
-#notify "No message subject..." "No message body..." ""
+# notify;

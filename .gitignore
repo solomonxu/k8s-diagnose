@@ -40,3 +40,9 @@ m4/ltsugar.m4
 m4/ltversion.m4
 m4/lt~obsolete.m4
 autom4te.cache
+/conf/mail.rc
+/conf/mail-solomon.rc
+/conf/diag.conf
+/conf/diag-solomon.conf
+/conf/*.rc
+/conf/*.conf
