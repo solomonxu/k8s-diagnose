@@ -15,13 +15,13 @@ How to use the shell:
 3. Modify config files, fit to your real email service.
 
    vi diag.conf
-## email of notify
+# email of notify
 notify_type=email
 notify_email_account=7094****@qq.com
 notify_email_recipients=7000****@qq.com
 
    vi mail.rc
-## 7094****@@qq.com
+# 7094****@@qq.com
 account 7094****@qq.com {
     set smtp=smtps://smtp.qq.com:465
     set smtp-auth=login
