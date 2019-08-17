@@ -1,0 +1,5 @@
+## IP(absolute)  user(optional)  password(optional)  port(optional)
+default root mypassword 22
+#192.168.6.191
+#192.168.6.192 root
+#192.168.6.193 root mypassword1 4022
