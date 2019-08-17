@@ -46,3 +46,6 @@ autom4te.cache
 /conf/diag-solomon.conf
 /conf/*.rc
 /conf/*.conf
+/conf/hosts-list.txt
+/conf/hosts-auth.txt
+/conf/diag.conf
