@@ -1,0 +1,13 @@
+FROM docker.io/centos:7.5.1804
+
+MAINTAINER solomonxu<solomonxu@163.com>
+
+## Update CentOS
+RUN yum -y update
+
+## Install supervisor etc.
+RUN yum install -y openssh-clients openssh-server
+RUN yum install -y net-tools
+RUN yum install -y epel-release
+RUN yum install -y supervisor
+RUN yum install -y which mailx expect

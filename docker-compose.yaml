@@ -1,0 +1,15 @@
+version: "2"
+services:
+  supervisor:
+    image: k8s-diagnose:latest
+    ports:
+      - "0.0.0.0:9022:22"
+      - "0.0.0.0:9080:80"
+      - "0.0.0.0:9001:9001"
+    privileged: true
+    command: 
+      - /usr/bin/bash
+      - -c 
+      - |
+        supervisord -c /supervisord/supervisord.conf
+        while true; do sleep 100; done
