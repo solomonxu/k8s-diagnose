@@ -17,17 +17,17 @@ TZ="Asia/Shanghai"
 logger_set_timezone()
 {
     if [ $# -ge 1 ]; then
-	    TZ=$1
-		logger_info "Set timezone, TZ=${TZ}."
-	fi
+        TZ=$1
+        logger_info "Set timezone, TZ=${TZ}."
+    fi
 }
 
 ## Set logfile path to output 
 logger_set_output()
 {
     if [ $# -ge 1 ]; then
-	    LOG_OUTPUT_FILE=$1
-	fi
+        LOG_OUTPUT_FILE=$1
+    fi
 }
 
 ## Set language
@@ -35,12 +35,12 @@ logger_set_lang()
 {
     if [ $# -le 0 ]; then
         return;
-	fi
+    fi
     for lang in ${LOG_LANG_ALL}; do
         if [ ${lang} = $1 ]; then
             LOG_LANG=${lang}
-			LOG_MSG_TEMPLATE="${LOG_MSG_TEMPLATE_AFFIX}${LOG_LANG}.tmpl"
-		fi 
+            LOG_MSG_TEMPLATE="${LOG_MSG_TEMPLATE_AFFIX}${LOG_LANG}.tmpl"
+        fi 
     done
 }
 
@@ -49,7 +49,7 @@ logger_output_private()
 {
     if [ $# -le 0 ]; then
         return;
-	fi
+    fi
     debug_level=$1
     msg_id=$2
     shift
