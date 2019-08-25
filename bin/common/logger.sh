@@ -6,7 +6,7 @@ LOG_MSG_TEMPLATE_AFFIX="diag-msg_"
 LOG_OUTPUT_FILE_DEFAULT="../logs/diag.log"
 
 ## Define variables
-LOG_DEBUG_LEVEL=1
+LOG_DEBUG_LEVEL=0
 LOG_OUTPUT_FILE=$LOG_OUTPUT_FILE_DEFAULT
 LOG_OUTPUT_CONSOLE=true
 LOG_LANG=en
@@ -50,22 +50,22 @@ logger_output_private()
     if [ $# -le 0 ]; then
         return;
     fi
-    debug_level=$1
+    info_level=$1
     msg_id=$2
     shift
-    millisecond=$(expr $(date +%N) / 1000000)
-    debug_msg_head="$(TZ=$TZ date '+%Y-%m-%d %H:%M:%S').$(printf '%03d' ${millisecond}) [$$] - ${debug_level} "
+    millisecond=$(expr $(date +%N) / 1000)
+    debug_msg_head="$(TZ=$TZ date '+%Y-%m-%d %H:%M:%S').$(printf '%06d' ${millisecond}) [$$] - ${info_level} "
     if [ "${msg_id:0:3}" = "MSG" ]; then
         shift
         pattern=$($msg_id)
-        debug_msg=${debug_msg_head}$(printf $pattern $@ )
+        debug_msg="${debug_msg_head}""$(printf $pattern $@ )"
     else
-        debug_msg=${debug_msg_head}$@ 
+        debug_msg="${debug_msg_head}$@"
     fi
     #debug_msg=${debug_msg_head}$(printf $2 )
-    echo ${debug_msg} >> ${LOG_OUTPUT_FILE}
+    echo "${debug_msg}" >> ${LOG_OUTPUT_FILE}
     if [ ${LOG_OUTPUT_CONSOLE} = true ]; then
-        echo ${debug_msg}
+        echo "${debug_msg}"
     fi
 }
 
@@ -93,18 +93,26 @@ logger_warn()
     fi
 }
 
-## Logger alert 3
-logger_alert()
+## Logger warn 3
+logger_error()
 {
     if [ ${LOG_DEBUG_LEVEL} -le 3 ]; then
+        logger_output_private "ERROR" $@
+    fi
+}
+
+## Logger alert 4
+logger_alert()
+{
+    if [ ${LOG_DEBUG_LEVEL} -le 4 ]; then
         logger_output_private "ALERT" $@
     fi
 }
 
-## Logger fatal 4
+## Logger fatal 5
 logger_fatal()
 {
-    if [ ${LOG_DEBUG_LEVEL} -le 4 ]; then
+    if [ ${LOG_DEBUG_LEVEL} -le 5 ]; then
         logger_output_private "FATAL" $@
     fi
 }
