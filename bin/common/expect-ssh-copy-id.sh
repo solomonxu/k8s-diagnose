@@ -7,12 +7,15 @@ set timeout 10
 set SSH_HOST [lindex $argv 0]
 set SSH_USER [lindex $argv 1]
 set SSH_PASS [lindex $argv 2]
-set ID_RSA_FILE [lindex $argv 3]
-set PARAM_SSH_PORT [lindex $argv 4]
+set PARAM_SSH_PORT [lindex $argv 3]
+#set ID_RSA_FILE [lindex $argv 4]
+set OPTIOTN "-o StrictHostKeyChecking=no -o ConnectTimeout=3"
+if { "${PARAM_SSH_PORT}" != "" } { set OPTIOTN "${PARAM_SSH_PORT} ${OPTIOTN}"}
 
 ## copy public rsa-key to remote host
-spawn ssh-copy-id -f ${PARAM_SSH_PORT} ${SSH_USER}@${SSH_HOST}
-#spawn ssh-copy-id -f -i ${ID_RSA_FILE} ${PARAM_SSH_PORT} ${SSH_USER}@${SSH_HOST}
+spawn ssh-copy-id -f ${PARAM_SSH_PORT} -o StrictHostKeyChecking=no -o ConnectTimeout=3 ${SSH_USER}@${SSH_HOST}
+
+## expect
 expect {
    # first connect, no public key in ~/.ssh/known_hosts
    # "Are you sure you want to continue connecting (yes/no)?"
